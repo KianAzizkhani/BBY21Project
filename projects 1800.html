@@ -35,17 +35,17 @@
         }
 
         h1 {
-            font-size: 1000%;
+            font-size: 200%;
             text-align: center;
         }
 
         h2 {
-            font-size: 600%;
+            font-size: 100%;
             text-align: center;
         }
 
         h4 {
-            font-size: 500%;
+            font-size: 100%;
             padding: 5%;
         }
 
@@ -62,8 +62,11 @@
         }
 
         button {
-            font-size: 75%;
+            text-align: center;
+            font-size: 150%;
             background-color: rgb(100, 101, 196);
+            margin: 0 auto;
+            display: block;
         }
 
         select {
@@ -74,10 +77,8 @@
             font-size: 50px;
         }
 
-        .material-icons {
-            font-size: 1300%;
-            width: auto;
-
+        input {
+            font-size: 150%;
         }
     </style>
 
@@ -85,7 +86,10 @@
 
 <body>
     <h1>Spending Goals</h1>
-    <h2>Enter Goal: <input type="text" id="text" placeholder="$0.00"> <button class="Submit">Submit</button></h2>
+    <br>
+    <br>
+    <h2>Enter Goal: <input type="text" id="text" placeholder="$0.00"></h2>
+    <br>
     <h2>What category is your goal?
         <select name="month" id="month">
             <option value="Week">Food</option>
@@ -94,8 +98,9 @@
         </select>
     </h2>
     <br>
+    <button class="Submit">Submit</button>
     <br>
-
+    <br>
     <table>
         <tr>
             <td>
