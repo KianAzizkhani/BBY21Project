@@ -29,6 +29,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
+                #topbar {
+            background-color: #1f2e3d67;
+        }
         body {
             font-size: 12px;
             font-family: sans-serif;
@@ -66,7 +69,18 @@ td {
     font-size: 35px;
     text-align: left;
 }
-a{
+h2 {
+    text-align: center;
+}
+
+button {
+            text-align: center;
+            font-size: 150%;
+            background-color: rgb(100, 101, 196);
+            margin: 0 auto;
+            display: block;
+        }
+        a{
             color: black;
         }
     </style>
@@ -74,68 +88,39 @@ a{
 
 <body>
 
-    <br>
-    <br>
-
-    <img src="images/mainpage.png" class="rounded mx-auto d-block notTooBig" alt="progress report" width="100%">
-
-    <br>    
-    <br>    <br>
-    <br>    <br>
-    <br>    <br>
-
-    <div class = "transactions">
-        <table>
-            <tr>
-                <td>
-                    $23 Oct 3, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $19.99 Oct 5, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $12.22 Oct 8, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $22.58 Oct 12, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $12.48 Oct 14, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $94.44 Oct 20, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $1345.23 Oct 31, 2021
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    $5.02 Nov 2, 2021
-                </td>
-            </tr>
-        </table>
+    <div id="topbar">
+        <img src="images/mainpage.png" width="15%" />
+        <a style="color: black;" href="main.html" class="material-icons goRight">home</a>
     </div>
 
+    <br><br><br><br><br><br><br><br><br><br>
+
+    <h2>Enter Transaction: <input type="text" id="text" placeholder="$0.00"></h2>
+
+    <br><br><br><br>
+
+    <h2>Category
+        <select>
+            <option>Food</option>
+            <option>Clothes</option>
+            <option>Other: </option>
+        </select>
+    </h2>
+
+    <br><br><br><br><br><br><br><br><br><br>
+
+    <h2>Time
+        <select>
+            <option>One-time</option>
+            <option>Weekly</option>
+            <option>Monthly</option>
+            <option>Yearly</option>
+        </select>
+    </h2>
+
+    <br><br><br><br>
+
+    <button class="Submit">Submit</button>
 
 
     <!-- Optional JavaScript; choose one of the two! -->

@@ -30,6 +30,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
+                #topbar {
+            background-color: #1f2e3d67;
+        }
         body {
             background-color: #3f5f7e;
         }
@@ -80,11 +83,18 @@
         input {
             font-size: 150%;
         }
+        a{
+            color: black;
+        }
     </style>
 
 </head>
 
 <body>
+    <div id="topbar">
+        <img src="images/mainpage.png" width="15%" />
+        <a style="color: black; float: right;" href="main.html" class="material-icons goRight">home</a>
+    </div>
     <h1>Spending Goals</h1>
     <br>
     <br>
@@ -132,11 +142,11 @@
     </table>
     <div class="fixed-bottom py-3">
         <footer class="navbar justify-content-evenly bg-white fixed-bottom">
-            <i class="material-icons">category</i>
-            <i class="material-icons">bar_chart</i>
-            <i class="material-icons big">add_circle</i>
-            <i class="material-icons">outlined_flag</i>
-            <i class="material-icons">person</i>
+            <a class="material-icons">category</a>
+            <a href="reports.html" class="material-icons">bar_chart</a>
+            <a href="Transactions.html" class="material-icons big">add_circle</a>
+            <a href="goals.html" class="material-icons">outlined_flag</a>
+            <a class="material-icons">person</a>
         </footer>
     </div>
 
