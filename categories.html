@@ -1,9 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <title>Categories</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
@@ -42,103 +44,9 @@
 
     <!-- Link to api keys for firebase -->
     <script src="/scripts/firebaseAPI.js"></script>
-<!--
-    <style>
-                #topbar {
-            background-color: #1f2e3d67;
-        }
-        body {
-            font-size: 12px;
-            font-family: sans-serif;
-            background: #3f5f7e;
-        }
-
-        .big {
-            font-size: 50px;
-        }
-
-        .notTooBig {
-            max-width: 450px;
-        }
-
-        #first {
-            text-align: center;
-            font-size: 150%;
-            text-emphasis: 100%;
-        }
-
-        .goRight {
-            float: right;
-            margin-top: 1%;
-            margin-right: 1%;
-        }
-
-        span {
-            font-size: 100%;
-        }
-        table, th, td {
-  border: 1px solid black;
-  width: 100%;
-}
-td {
-    font-size: 35px;
-    text-align: left;
-}
-h2 {
-    text-align: center;
-}
-
-button {
-            text-align: center;
-            font-size: 150%;
-            background-color: rgb(100, 101, 196);
-            margin: 0 auto;
-            display: block;
-        }
-        a{
-            color: black;
-        }
-    </style>
-    -->
 </head>
 
 <body>
-
-    <div id="topbar">
-        <img src="images/mainpage.png" width="15%" />
-        <a style="color: black;" href="main.html" class="material-icons goRight">home</a>
-    </div>
-
-    <br><br><br><br><br><br><br><br><br><br>
-
-    <h2>Enter Transaction: <input type="text" id="amount" placeholder="$0.00"></h2>
-
-    <br><br><br><br>
-
-    <h2>Category
-        <select>
-            <option>Food</option>
-            <option>Clothes</option>
-            <option>Other: </option>
-        </select>
-    </h2>
-
-    <br><br><br><br><br><br><br><br><br><br>
-
-    <h2>Time
-        <select>
-            <option>One-time</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-            <option>Yearly</option>
-        </select>
-    </h2>
-
-    <br><br><br><br>
-
-    <button class="Submit" onclick="addTransaction()">Submit</button>
-
-
     <div class="fixed-bottom py-3">
         <footer class="navbar justify-content-evenly bg-white fixed-bottom">
             <a class="material-icons">category</a>
@@ -149,35 +57,49 @@ button {
         </footer>
     </div>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+    <div id="categoryInput">
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>School</label>
+                    <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="cityInput" class="form-control" placeholder="Enter your city">
+                </div>
+            </fieldset>
+            <div class="d-flex justify-content-end mt-5">
+                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                <span style="width: 10px"></span>
+                <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <!--add, edit, delete categories-->
 
     <script>
-        function addTransaction() {
-            let Amount = document.getElementById("amount").value;
+        function addCategcory() {
+            let Categ = document.getElementById("category").value;
             //let Category = document.getElementById("category").value;
 
             firebase.auth().onAuthStateChanged(user => {
-                if (user){
-                    console.log("user is signed in, I'm adding transactions.")
+                if (user) {
+                    console.log("user is signed in, I'm doing stuff.")
                     var currentUser = db.collection("users").doc(user.uid);
                     var userID = user.uid;
 
                     currentUser.get()
-                        .then(userDoc =>{
+                        .then(userDoc => {
                             var userEmail = userDoc.data().email;
 
-                            db.collection("Transactions").add({
-                                Amount: Amount,
-                                //Catgeory: Category
-                                //UserID: userID,
-                                //UserEmail: userEmail
-                                //Frequency:
-                                //Date: 
-                                //Title:
+                            db.collection("Categories").add({
+                                Category: Categ,
 
                             });
                         })
@@ -186,7 +108,16 @@ button {
                 }
             });
         }
+
+        function editCategory() {
+
+        }
+
+        function delCategory() {
+
+        }
     </script>
+
 </body>
 
 </html>
