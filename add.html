@@ -41,8 +41,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Link to api keys for firebase -->
-    <script src="/scripts/firebaseAPI.js"></script>
-<!--
+    <script src="./scripts/firebaseAPI.js"></script>
+    <!--
     <style>
                 #topbar {
             background-color: #1f2e3d67;
@@ -126,7 +126,7 @@ button {
     <br><br><br><br><br><br><br><br><br><br>
 
     <h2>Time
-        <select>
+        <select id="Time" onclick="addFrequency()">
             <option>One-time</option>
             <option>Weekly</option>
             <option>Monthly</option>
@@ -158,34 +158,40 @@ button {
     <script>
         function addTransaction() {
             let Amount = document.getElementById("amount").value;
+            let frequency = document.getElementById("Time").
             //let Category = document.getElementById("category").value;
 
             firebase.auth().onAuthStateChanged(user => {
-                if (user){
+                if (user) {
                     console.log("user is signed in, I'm adding transactions.")
-                    var currentUser = db.collection("users").doc(user.uid);
+                    var currentUser = db.collection("users").doc(user.uid).collection("transactions");
                     var userID = user.uid;
 
-                    currentUser.get()
-                        .then(userDoc =>{
-                            var userEmail = userDoc.data().email;
 
-                            db.collection("Transactions").add({
-                                Amount: Amount,
-                                //Catgeory: Category
-                                //UserID: userID,
-                                //UserEmail: userEmail
-                                //Frequency:
-                                //Date: 
-                                //Title:
+                    currentUser.add({
+                        Amount: Amount,
+                        //UserID: userID,
+                        //UserEmail: userEmail
+                        //catgeory: "Games"
+                        frequency: frequency
+                        //date: automatic
+                        //title: optional
 
-                            });
-                        })
+                    });
+
                 } else {
                     console.log("no user signed in");
                 }
             });
         }
+        /*
+        .orderBy("date")
+        .limit(10)
+        db.collection("users").doc(user.uid).collection("transactions")
+        snap.forEach(function(doc){
+            amt = doc.data(.amount);
+        }
+        */
     </script>
 </body>
 
