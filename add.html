@@ -111,12 +111,12 @@ button {
 
     <br><br><br><br><br><br><br><br><br><br>
 
-    <h2>Enter Transaction: <input type="text" id="amount" placeholder="$0.00"></h2>
+    <h2>Enter Transaction: <input type="text" id="Amount" placeholder="$0.00"></h2>
 
     <br><br><br><br>
 
     <h2>Category
-        <select>
+        <select id="Category" onclick="addCategory()">
             <option>Food</option>
             <option>Clothes</option>
             <option>Other: </option>
@@ -139,6 +139,11 @@ button {
     <button class="Submit" onclick="addTransaction()">Submit</button>
 
 
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+
     <div class="fixed-bottom py-3">
         <footer class="navbar justify-content-evenly bg-white fixed-bottom">
             <a class="material-icons">category</a>
@@ -157,9 +162,9 @@ button {
 
     <script>
         function addTransaction() {
-            let Amount = document.getElementById("amount").value;
-            let frequency = document.getElementById("Time").
-            //let Category = document.getElementById("category").value;
+            let Amount = document.getElementById("Amount").value;
+            let Frequency = document.getElementById("Time").value;
+            let Category = document.getElementById("Category").value;
 
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
@@ -172,16 +177,16 @@ button {
                         Amount: Amount,
                         //UserID: userID,
                         //UserEmail: userEmail
-                        //catgeory: "Games"
-                        frequency: frequency
+                        Catgeory: Category,
+                        Frequency: Frequency
                         //date: automatic
                         //title: optional
 
                     });
 
-                } else {
-                    console.log("no user signed in");
-                }
+            } else {
+                console.log("no user signed in");
+            }
             });
         }
         /*
