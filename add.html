@@ -6,15 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <title>Budgeting APP</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Bootstrap FirebaseUI CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,131 +24,131 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
-    <link rel="navbar" href="https://fonts.googleapis.com/css?family=Cherry+Swash">
+    <!--Style sheet-->
     <link rel="stylesheet" href="style.css">
+
     <!-- Google icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Link to api keys for firebase -->
     <script src="./scripts/firebaseAPI.js"></script>
-    <!--
+
     <style>
-                #topbar {
-            background-color: #1f2e3d67;
-        }
-        body {
-            font-size: 12px;
-            font-family: sans-serif;
-            background: #3f5f7e;
+        #form-grid {
+            display: grid;
+            grid-template-columns: 2vw 24vw 23vw 2vw 23vw 24vw 2vw;
+            grid-template-rows: 5vh 10vh 5vh 15vh 5vh 10vh 10vh 5vh;
         }
 
-        .big {
-            font-size: 50px;
+        #titleField {
+            grid-column: 2 / 7;
+            grid-row: 2;
         }
 
-        .notTooBig {
-            max-width: 450px;
+        #amountField {
+            grid-column: 2 / 5;
+            grid-row: 4;
         }
 
-        #first {
-            text-align: center;
-            font-size: 150%;
-            text-emphasis: 100%;
+        #radioField {
+            grid-column: 6;
+            grid-row: 4;
+            justify-self: center;
+            align-self: center;
+            align-items: center;
+            justify-items: center;
         }
 
-        .goRight {
-            float: right;
-            margin-top: 1%;
-            margin-right: 1%;
+        #categoryField {
+            grid-column: 2 / 4;
+            grid-row: 6;
         }
 
-        span {
-            font-size: 100%;
+        #frequencyField {
+            grid-column: 5 / 7;
+            grid-row: 6;
+            justify-self: center;
         }
-        table, th, td {
-  border: 1px solid black;
-  width: 100%;
-}
-td {
-    font-size: 35px;
-    text-align: left;
-}
-h2 {
-    text-align: center;
-}
 
-button {
-            text-align: center;
-            font-size: 150%;
-            background-color: rgb(100, 101, 196);
-            margin: 0 auto;
-            display: block;
+        #submitButton {
+            grid-column: 2 / 7;
+            grid-row: 8;
         }
-        a{
-            color: black;
+
+        label {
+            font-size: 2.5vh;
         }
     </style>
-    -->
 </head>
 
 <body>
-
     <div id="topbar">
-        <img src="images/mainpage.png" width="15%" />
+        <img src="images/mainpage.png" width="15%" alt="logo" />
         <a style="color: black;" href="main.html" class="material-icons goRight">home</a>
     </div>
+    <form id="form-grid">
+        <!--Title text field-->
+        <div class="form-group" id="titleField">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" placeholder="Optional">
+        </div>
+        <!--Amount text field-->
+        <div class="form-group" id="amountField">
+            <label for="Amount">Amount</label>
+            <input type="text" class="form-control" placeholder="$0.00" id="Amount">
+        </div>
+        <!--Income Outcome Radio Buttons-->
+        <div id="radioField">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="IncomeOutcome" id="inlineRadio1" value="Income">
+                <label class="form-check-label" for="inlineRadio1">Income</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="IncomeOutcome" id="inlineRadio2"
+                    value="Outcome">
+                <label class="form-check-label" for="inlineRadio2">Outcome</label>
+            </div>
+        </div>
+        <!--Supposed to be Categories, does nothing right now-->
+        <div class="btn-group" id="categoryField">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Action
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+            </ul>
+        </div>
+        <!--Frequency select field-->
+        <div id="frequencyField">
+            <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="Frequency">
+                <option value="One Time">One Time</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Yearly">Yearly</option>
+            </select>
+        </div>
 
-    <br><br><br><br><br><br><br><br><br><br>
+        <button type="submit" class="btn btn-primary" id="submitButton" onclick="addTransaction()">Submit</button>
+    </form>
 
-    <h2>Enter Transaction: <input type="text" id="Amount" placeholder="$0.00"></h2>
-
-    <br><br><br><br>
-
-    <h2>Category
-        <select id="Category" onclick="addCategory()">
-            <option>Food</option>
-            <option>Clothes</option>
-            <option>Other: </option>
-        </select>
-    </h2>
-
-    <br><br><br><br><br><br><br><br><br><br>
-
-    <h2>Time
-        <select id="Time" onclick="addFrequency()">
-            <option>One-time</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-            <option>Yearly</option>
-        </select>
-    </h2>
-
-    <br><br><br><br>
-
-    <button class="Submit" onclick="addTransaction()">Submit</button>
-
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
-    <div class="fixed-bottom py-3">
+    <div class="fixed-bottom" id="botNav">
         <footer class="navbar justify-content-evenly bg-white fixed-bottom">
-            <a class="material-icons">category</a>
+            <a href="categories.html" class="material-icons">category</a>
             <a href="reports.html" class="material-icons">bar_chart</a>
-            <a href="add.html" class="material-icons big">add_circle</a>
+            <a href="add.html" class="material-icons">add_circle</a>
             <a href="goals.html" class="material-icons">outlined_flag</a>
-            <a class="material-icons">person</a>
+            <a href="profile.html" class="material-icons">person</a>
         </footer>
     </div>
+
+
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -163,8 +159,11 @@ button {
     <script>
         function addTransaction() {
             let Amount = document.getElementById("Amount").value;
-            let Frequency = document.getElementById("Time").value;
-            let Category = document.getElementById("Category").value;
+            let Frequency = document.getElementById("Frequency").value;
+            // let Category = document.getElementById("Category").value;
+            let Title = document.getElementById("Title").value;
+
+            let Direction = document.querySelector("input[name='IncomeOutcome']:checked").value;
 
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
@@ -172,21 +171,18 @@ button {
                     var currentUser = db.collection("users").doc(user.uid).collection("transactions");
                     var userID = user.uid;
 
-
                     currentUser.add({
                         Amount: Amount,
-                        //UserID: userID,
-                        //UserEmail: userEmail
-                        Catgeory: Category,
-                        Frequency: Frequency
-                        //date: automatic
-                        //title: optional
-
+                        // Catgeory: Category,
+                        Frequency: Frequency,
+                        Title: Title,
+                        Direction: Direction
+                        // date: automatic
                     });
 
-            } else {
-                console.log("no user signed in");
-            }
+                } else {
+                    console.log("no user signed in");
+                }
             });
         }
         /*
@@ -197,6 +193,11 @@ button {
             amt = doc.data(.amount);
         }
         */
+    </script>
+
+    <!--Bootstrap Bundle with Popper-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
 

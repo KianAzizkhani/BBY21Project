@@ -6,8 +6,8 @@
     <title>My BCIT Project</title>
     <meta name="comp1800 template" content="my bcit Hiking App project">
 
-    <!-- Optional styles and scripts of your own -->
-    <link rel="stylesheet" href="./style.css">
+    <!--Style sheet-->
+    <link rel="stylesheet" href="BBY21Project\style.css">
 
     <!-- Bootstrap FirebaseUI CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -32,8 +32,8 @@
 
     <!-- Firebase 8 related CSS CDN -->
 
-<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-- Firebase 8 related JS CDN -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -48,8 +48,10 @@
 <body>
 
     <div class="container">
-        <h1 class="display-4"><h1>Welcome to BBY21's Budgeting App</h1>
-        <h1 class="display-4">Let's Login!</h1>
+        <h1 class="display-4">
+            <h1>Welcome to BBY21's Budgeting App</h1>
+            <h1 class="display-4">Let's Login!</h1>
+        </h1>
     </div>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
@@ -57,9 +59,9 @@
     <script src="scripts/firebaseAPI.js"></script>
     <script>
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
-            var uiConfig = {
-                callbacks: {
-                    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+        var uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function (authResult, redirectUrl) {
                     // User successfully signed in.
                     // Return type determines whether we continue the redirect automatically
                     // or whether we leave that to developer to handle.
@@ -89,31 +91,30 @@
                     }
                     return false;
                 },
-                    uiShown: function () {
-                        // The widget is rendered.
-                        // Hide the loader.
-                        document.getElementById('loader').style.display = 'none';
-                    }
-                },
-                // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-                signInFlow: 'popup',
-                signInSuccessUrl: 'main.html',
-                signInOptions: [
-                    // Leave the lines as is for the providers you want to offer your users.
-                    //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-                    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-                    //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    // firebase.auth.PhoneAuthProvider.PROVIDER_ID
-                ],
-                // Terms of service url.
-                tosUrl: '<your-tos-url>',
-                // Privacy policy url.
-                privacyPolicyUrl: '<your-privacy-policy-url>'
-            };
-            ui.start('#firebaseui-auth-container', uiConfig);
-
+                uiShown: function () {
+                    // The widget is rendered.
+                    // Hide the loader.
+                    document.getElementById('loader').style.display = 'none';
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'popup',
+            signInSuccessUrl: 'main.html',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                //firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                // firebase.auth.PhoneAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url.
+            tosUrl: '<your-tos-url>',
+            // Privacy policy url.
+            privacyPolicyUrl: '<your-privacy-policy-url>'
+        };
+        ui.start('#firebaseui-auth-container', uiConfig);
     </script>
 </body>
 

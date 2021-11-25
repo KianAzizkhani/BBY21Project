@@ -40,13 +40,6 @@ a{
     margin: 1%;
 }
 
-button {
-    text-align: center;
-    font-size: 150%;
-    background-color: rgb(100, 101, 196);
-    margin: 5% auto;
-    display: block;
-}
 h1,h2,h4{
     margin:0%;
     padding:0%;
