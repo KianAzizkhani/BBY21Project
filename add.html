@@ -34,6 +34,17 @@
     <script src="./scripts/firebaseAPI.js"></script>
 
     <style>
+        .container{
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 50px auto auto;
+        }
+
+        #topbar{
+            grid-column: 1;
+            grid-row: 1;
+        }
+
         #form-grid {
             display: grid;
             grid-template-columns: 2vw 24vw 23vw 2vw 23vw 24vw 2vw;
@@ -82,74 +93,74 @@
 </head>
 
 <body>
-    <div id="topbar">
-        <img src="images/mainpage.png" width="15%" alt="logo" />
-        <a style="color: black;" href="main.html" class="material-icons goRight">home</a>
-    </div>
-    <form id="form-grid">
-        <!--Title text field-->
-        <div class="form-group" id="titleField">
-            <label for="Title">Title</label>
-            <input type="text" class="form-control" id="Title" placeholder="Optional">
+    <div class="container">
+        <div id="topbar">
+            <img src="images/mainpage.png" width="15%" alt="logo" />
+            <a style="color: black;" href="main.html" class="material-icons goRight">home</a>
         </div>
-        <!--Amount text field-->
-        <div class="form-group" id="amountField">
-            <label for="Amount">Amount</label>
-            <input type="text" class="form-control" placeholder="$0.00" id="Amount">
-        </div>
-        <!--Income Outcome Radio Buttons-->
-        <div id="radioField">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="IncomeOutcome" id="inlineRadio1" value="Income">
-                <label class="form-check-label" for="inlineRadio1">Income</label>
+        <form id="form-grid">
+            <!--Title text field-->
+            <div class="form-group" id="titleField">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="Title" placeholder="Optional">
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="IncomeOutcome" id="inlineRadio2"
-                    value="Outcome">
-                <label class="form-check-label" for="inlineRadio2">Outcome</label>
+            <!--Amount text field-->
+            <div class="form-group" id="amountField">
+                <label for="Amount">Amount</label>
+                <input type="text" class="form-control" placeholder="$0.00" id="Amount">
             </div>
+            <!--Income Outcome Radio Buttons-->
+            <div id="radioField">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="IncomeOutcome" id="inlineRadio1" value="Income">
+                    <label class="form-check-label" for="inlineRadio1">Income</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="IncomeOutcome" id="inlineRadio2"
+                        value="Outcome">
+                    <label class="form-check-label" for="inlineRadio2">Outcome</label>
+                </div>
+            </div>
+            <!--Supposed to be Categories, does nothing right now-->
+            <div class="btn-group" id="categoryField">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Action
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <!--Frequency select field-->
+            <div id="frequencyField">
+                <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="Frequency">
+                    <option value="One Time">One Time</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Yearly">Yearly</option>
+                </select>
+            </div>
+    
+            <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+        </form>
+    
+        <div class="fixed-bottom" id="botNav">
+            <footer class="navbar justify-content-evenly bg-white fixed-bottom">
+                <a href="categories.html" class="material-icons">category</a>
+                <a href="reports.html" class="material-icons">bar_chart</a>
+                <a href="add.html" class="material-icons">add_circle</a>
+                <a href="goals.html" class="material-icons">outlined_flag</a>
+                <a href="profile.html" class="material-icons">person</a>
+            </footer>
         </div>
-        <!--Supposed to be Categories, does nothing right now-->
-        <div class="btn-group" id="categoryField">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Action
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </div>
-        <!--Frequency select field-->
-        <div id="frequencyField">
-            <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="Frequency">
-                <option value="One Time">One Time</option>
-                <option value="Weekly">Weekly</option>
-                <option value="Monthly">Monthly</option>
-                <option value="Yearly">Yearly</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
-    </form>
-
-    <div class="fixed-bottom" id="botNav">
-        <footer class="navbar justify-content-evenly bg-white fixed-bottom">
-            <a href="categories.html" class="material-icons">category</a>
-            <a href="reports.html" class="material-icons">bar_chart</a>
-            <a href="add.html" class="material-icons">add_circle</a>
-            <a href="goals.html" class="material-icons">outlined_flag</a>
-            <a href="profile.html" class="material-icons">person</a>
-        </footer>
     </div>
-
-
-
+    
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -158,6 +169,7 @@
 
     <script>
         document.getElementById("submitButton").addEventListener("click", addTransaction, false);
+        
         function addTransaction(event) {
             event.preventDefault();
             let Amount = document.getElementById("Amount").value;
@@ -176,15 +188,23 @@
                         // Catgeory: Category,
                         Frequency: Frequency,
                         Title: Title,
-                        Direction: Direction
-                        // date: automatic
+                        Direction: Direction,
+                        Time: firebase.firestore.FieldValue.serverTimestamp()
+                    }).then(() => {
+                        location.reload();
                     });
+
                 } else {
-                    console.log("no user signed in");
+                    alert("You're not signed in!");
                 }
+
+                
             });
-            window.location.assign("add.html");
+
         }
+
+
+
         /*
         .orderBy("date")
         .limit(10)
