@@ -67,7 +67,7 @@
     <h2>Enter Goal amount: <input type="text" id="Goal" placeholder="$0.00"></h2>
     <br>
     <h2>What category is your goal?
-        <select id="Category" onChange="update()">
+        <select id="Category" onchange="update()">
 			<option value="Food">Food</option>
 			<option value="Clothes">Clothes</option>
 			<option value="Entertainment">Entertainment</option>
@@ -78,33 +78,16 @@
     <button type="submit" style="margin:auto; display:block;" class="btn btn-primary" id="submitButton" onclick="addGoal()">Submit</button>
     <br>
     <br>
-    <table>
-        <tr>
+
+    <table id="tabledata">
+        <tr id="template">
             <td>
-                <h4>Previous Goal: <span id="goal-goes-here"></span></h4>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h4>Previous Goal: </h4>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h4>Previous Goal: </h4>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h4>Previous Goal: </h4>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h4>Previous Goal: </h4>
+                <h4 id="Category-goes-here">Previous Category: </h4>
+                <h4 id="goal-goes-here">Previous Goal: </h4>
             </td>
         </tr>
     </table>
+
     <div class="fixed-bottom py-3">
         <footer class="navbar justify-content-evenly bg-white fixed-bottom">
             <a href= "categories.html" class="material-icons">category</a>
@@ -118,6 +101,7 @@
 
 </body>
 <script>
+    var userID;
     function addGoal() {
             let Goal = document.getElementById("Goal").value;
             let Category = document.getElementById("Category").value;
@@ -126,14 +110,14 @@
                 if (user) {
                     console.log("user is signed in, I'm adding a goal.")
                     var currentUser = db.collection("users").doc(user.uid).collection("Goal");
-                    var userID = user.uid;
+                    userID = user.uid;
 
                     currentUser.add({
                         Goal: Goal,
-                        Catgeory: Category,
+                        Category: Category,
                         // date: automatic
                     });
-
+                    read_display_goal();
                 } else {
                     console.log("no user signed in");
                 }
@@ -142,16 +126,75 @@
 
         function read_display_goal(){
             console.log(db.collection("users"))
-            var currentUser = db.collection("users").doc(user.uid).collection("Goal")
+            var currentUser = db.collection("users").doc(userID).collection("Goal")
                 .onSnapshot(GoalDoc=>{
-                    console.log(GoalDoc.data().Goal);
-                    document.getElementById("goal-goes-here").innerText = n;
-                    console.log("Goal received");
+                    addGoalRow(GoalDoc.docs);
+                    GoalDoc.docs.forEach(doc => {
+                        //console.log(doc)
+                        //console.log(doc.Category);
+                        //console.log(GoalDoc);
+                        //console.log(doc.data());
+                        // console.log(doc.data().Goal);
+                        // document.getElementById("goal-goes-here").innerText = doc.data().Goal;
+                        // document.getElementById("Category-goes-here").innerText = doc.data().Category;
+                        //addGoalRow(doc);
+                    });
+                    //console.log(GoalDoc.docs);
+                    //console.log(GoalDoc.data().Goal);
+
+                    //console.log("Goal received");
                 })
         }
+        // function addGoalRow(doc) {
+        //     let template = document.getElementById("template");
+        //     let container = document.getElementById("tabledata");
+        //     //console.log(Docs.size);
 
-        read_display_goal();
+        //     let newRow = template.cloneNode(true);
 
+
+        //     newRow.querySelector('#goal-goes-here').innerHTML = doc.data().Goal;
+
+        //     container.appendChild(newRow);
+        // }
+
+        function addGoalRow(docs) {
+            let template = document.getElementById("template");
+            let container = document.getElementById("tabledata");
+
+            while (container.firstChild){
+                container.removeChild(container.firstChild);
+            }
+
+            docs.forEach(doc => {
+
+                let newRow = template.cloneNode(true);
+
+                newRow.querySelector('#goal-goes-here').innerHTML = doc.data().Goal;
+                newRow.querySelector('#Category-goes-here').innerHTML = doc.data().Category;
+                container.appendChild(newRow);
+
+            })
+        }
+
+
+
+    //     function buildHTML(results){
+    // //reads card.html template
+    // let card = fs.readFileSync("./1800/BB21Project/Card.html", "utf8");
+    //     let cardDOM = new JSDOM(card);
+    // let html="";
+    // //loops through the database and prints
+    //     results.forEach((result) => {
+    //         //injecting variables into card DOM
+    //         cardDOM.window.document.getElementById("Amount").innerHTML
+    //         = user.Amount;
+    //         //converts card DOM into html
+    //         html += cardDOM.serialize();
+    //     });
+    // return html;
+
+    //}
 </script>
 
 </html>
