@@ -2,6 +2,10 @@
     background-color: #1f2e3d67;
 }
 
+#topbar img{
+    width: 60px;
+}
+
 body {
     font-size: 12px;
     font-family: sans-serif;
