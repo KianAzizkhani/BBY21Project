@@ -238,7 +238,7 @@
 
   <div class="fixed-bottom py-3">
     <footer class="navbar justify-content-evenly bg-white fixed-bottom">
-      <a href="categories.html" class="material-icons">category</a>
+      <a href="transactions.html" class="material-icons">category</a>
       <a href="reports.html" class="material-icons">bar_chart</a>
       <a href="add.html" class="material-icons big">add_circle</a>
       <a href="goals.html" class="material-icons">outlined_flag</a>
@@ -312,7 +312,7 @@
               snap.forEach(function (doc) {
                 console.log(doc.data()); //just to check
                 let y = doc.data().Amount; //y-axis
-                let x = doc.data().Time; //x-axis
+                let x = doc.data().Time.toDate().toLocaleString(); //x-
                 values.push(y);     //timespent display on y
                 labels.push(x);     //nickname display on x
                 console.log(labels);
@@ -337,7 +337,7 @@
         labels: xlabels,
         datasets: [{
           label: 'Amount',
-          backgroundColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgb(153, 255, 102)',
           borderColor: 'rgb(255, 99, 132)',
           data: yvalues
         }]

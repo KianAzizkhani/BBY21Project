@@ -47,8 +47,8 @@
 
         #form-grid {
             display: grid;
-            grid-template-columns: 2vw 24vw 23vw 2vw 23vw 24vw 2vw;
-            grid-template-rows: 5vh 10vh 5vh 15vh 5vh 10vh 10vh 5vh;
+            grid-template-columns: 2vw 20vw 23vw 2vw 23vw 20vw 2vw;
+            grid-template-rows: 5vh 10vh 5vh 15vh 5vh 10vh 10vh 5vh 5vh;
         }
 
         #titleField {
@@ -84,6 +84,16 @@
         #submitButton {
             grid-column: 2 / 7;
             grid-row: 8;
+        }
+
+        #redirect {
+            grid-row: 10;
+            grid-column: 3/6;
+            text-align: center;
+            border-style: solid, blue;
+            border-width: 5px;
+            background-color: whitesmoke;
+            font-size: x-large;
         }
 
         label {
@@ -152,7 +162,7 @@
     
         <div class="fixed-bottom" id="botNav">
             <footer class="navbar justify-content-evenly bg-white fixed-bottom">
-                <a href="categories.html" class="material-icons">category</a>
+                <a href="transactions.html" class="material-icons">category</a>
                 <a href="reports.html" class="material-icons">bar_chart</a>
                 <a href="add.html" class="material-icons">add_circle</a>
                 <a href="goals.html" class="material-icons">outlined_flag</a>
