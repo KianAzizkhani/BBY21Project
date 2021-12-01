@@ -9,9 +9,11 @@
 body {
     font-size: 12px;
     font-family: sans-serif;
-    background: #3f5f7e;
+    background:	#b4e282;
 }
-
+table,tr,td{
+    background-color: #c6e99f;
+}
 .big {
     font-size: 50px;
 }
@@ -68,7 +70,13 @@ table, th, td {
     font-size:125%;
     border: 1px solid black;
     width: 100%;
+    padding:1%;
+    background-color: #c6e99f;
 }
-table{
-    background: #3f5f7e;
+table tr td h4{
+    padding:1%;
+    font-size: 120%;
+}
+.fixed-bottom{
+    background-color: #feffe9;
 }
