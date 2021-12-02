@@ -68,7 +68,7 @@
     <br>
     <h2>What category is your goal?
         <select id="Category" onchange="update()">
-			<option value="Food">Food</option>
+			<option value="Food">House</option>
 			<option value="Clothes">Clothes</option>
 			<option value="Entertainment">Entertainment</option>
 		</select>
@@ -126,18 +126,15 @@
 
         function read_display_goal(){
             console.log(db.collection("users"))
+            console.log(doc.data().Goal);
+            var UserID = user.uid;
             var currentUser = db.collection("users").doc(userID).collection("Goal")
                 .onSnapshot(GoalDoc=>{
                     addGoalRow(GoalDoc.docs);
                     GoalDoc.docs.forEach(doc => {
-                        //console.log(doc)
-                        //console.log(doc.Category);
-                        //console.log(GoalDoc);
-                        //console.log(doc.data());
-                        // console.log(doc.data().Goal);
-                        // document.getElementById("goal-goes-here").innerText = doc.data().Goal;
-                        // document.getElementById("Category-goes-here").innerText = doc.data().Category;
-                        //addGoalRow(doc);
+                        document.getElementById("goal-goes-here").innerText = doc.data().Goal;
+                        document.getElementById("Category-goes-here").innerText = doc.data().Category;
+
                     });
                     //console.log(GoalDoc.docs);
                     //console.log(GoalDoc.data().Goal);
