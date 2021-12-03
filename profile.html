@@ -25,7 +25,7 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
 
     <!--Style sheet-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Google icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -159,41 +159,5 @@
                 </footer>
             </div>
 
-            <script>
-                 function insertName() {
-      firebase.auth().onAuthStateChanged((user) => {
-
-        if (user) {
-
-          currentUser = db.collection("users").doc(user.uid);
-
-          currentUser.get().then((userDoc) => {
-            var user_Name = userDoc.data().name;
-            document.getElementById("names").innerHTML = user_Name;
-          });
-        } else {
-
-        }
-      });
-    }
-    insertName();
-
-    function insertEmail() {
-      firebase.auth().onAuthStateChanged((user) => {
-
-        if (user) {
-
-          currentUser = db.collection("users").doc(user.uid);
-
-          currentUser.get().then((userDoc) => {
-            var user_Name = userDoc.data().email;
-            document.getElementById("emails").innerHTML = user_Name;
-          });
-        } else {
-
-        }
-      });
-    }
-    insertEmail();
-            </script>
+            <script src="./js/profile.js"></script>
     </body>
